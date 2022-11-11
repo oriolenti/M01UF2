@@ -13,7 +13,7 @@ IP_CLIENT=`echo $MSG | cut -d " " -f 2`
 
 echo "(3) SEND: Comprobación"
 
-if [ "$HAANDSHAKE" != "HOLI_TURIP" ]
+if [ "$HANDSHAKE" != "HOLI_TURIP" ]
 then
 	echo "ERROR 1: Handshake incorrecto"
 
@@ -22,7 +22,7 @@ then
 	exit 1
 fi
 
-echo "OK TURIP" | nc $IP_CLIENT $PORT 
+echo "OK_TURIP" | nc $IP_CLIENT $PORT 
 
 echo "(4) LISTEN"
 
@@ -42,5 +42,10 @@ then
 	exit 2
 fi
 
+echo "OK_FILE_NAME" | nc $IP_CLIENT $PORT
+
+echo "(8) LISTEN"
+
+nc -l $POR > inbox/$FILE_NAMET
 
 exit 0
